@@ -21,5 +21,6 @@ jobs:
       shell: bash
       run: |
         source .venv/Scripts/activate
-        uv pip install -r requirements.txt
+        uv pip install -r pyproject.toml
+        ls -lah .venv/Lib/python3.11/site-packages/markupsafe/
         strace python main.py
