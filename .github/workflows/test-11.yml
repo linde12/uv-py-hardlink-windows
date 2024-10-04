@@ -1,0 +1,26 @@
+name: Test
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
+
+    - name: Create virtual environment
+      run: uv venv .venv
+
+    - name: Install & run
+      shell: bash
+      run: |
+        source .venv/Scripts/activate
+        uv pip install -r pyproject.toml
+        find .venv/ -name "_speedups*" -exec ls -lah {} \;
+        strace python main.py

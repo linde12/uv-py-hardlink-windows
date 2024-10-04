@@ -1,8 +1,8 @@
 name: Test
-on: workflow_dispatch
+on: [push, workflow_dispatch]
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
     - uses: actions/checkout@v2
 
@@ -22,5 +22,5 @@ jobs:
       run: |
         source .venv/Scripts/activate
         uv pip install -r pyproject.toml
-        ls -lah .venv/Lib/python3.11/site-packages/markupsafe/
+        find .venv/ -name "_speedups*" -exec ls -lah {} \;
         strace python main.py
