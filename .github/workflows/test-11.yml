@@ -1,4 +1,4 @@
-name: Test
+name: win11
 on: [push, workflow_dispatch]
 jobs:
   build:
@@ -23,4 +23,4 @@ jobs:
         source .venv/Scripts/activate
         uv pip install -r pyproject.toml
         find .venv/ -name "_speedups*" -exec ls -lah {} \;
-        strace python main.py
+        strace python src/main.py
