@@ -5,7 +5,8 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "markupsafe>=2.1.5",
+  "markupsafe>=2.1.5",
+  "nox"
 ]
 
 [build-system]
