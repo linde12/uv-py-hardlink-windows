@@ -18,9 +18,7 @@ jobs:
       run: uv venv .venv
 
     - name: Install & run
-      shell: bash
       run: |
-        source .venv/Scripts/activate
+        .venv/Scripts/activate.ps1
         uv pip install -r pyproject.toml
-        find .venv/ -name "_speedups*" -exec ls -lah {} \;
         python src/main.py
